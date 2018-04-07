@@ -4,5 +4,8 @@
 		<class>com.cqunis.oa.entity.New</class>
 		<class>model.Enterp</class>
 		<class>com.cqunis.cms.entity.Reply</class>
+		<class>com.cqunis.cms.entity.ExType</class>
+		<class>com.cqunis.cms.entity.Extension</class>
+		<class>com.cqunis.cms.entity.ExRecord</class>
 	</persistence-unit>
 </persistence>

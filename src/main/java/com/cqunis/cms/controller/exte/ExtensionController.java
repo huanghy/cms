@@ -197,22 +197,7 @@ public class ExtensionController extends BaseController {
 			Extension extension = extensionService.find(id);
 			/***启动**/
 			if(state==0){
-				String actualAmount = extension.getActualAmount();
-				BigDecimal actAmount = new BigDecimal(actualAmount);
-				int alrAd=extension.getAlrAd();
-				alrAd+=1;
-				BigDecimal bigDecimal = new BigDecimal(extension.getUnitPrice());
-				bigDecimal=bigDecimal.add(actAmount);
-				BigDecimal scale = bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP);
-				extension.setActualAmount(scale.toString());
-				extension.setAlrAd(alrAd);
-				/***启动记录***/
-				ExRecord exRecord = new ExRecord();
-				exRecord.setExtId(id);
-				exRecord.setEndTime(new Date());
-				exRecord.setHumanId(extension.getHumanId());
-				exRecord.setUnitPrice(extension.getUnitPrice());
-				exRecordService.save(exRecord);
+				extension.setExeState(-1);
 			}
 			extension.setTaskState(state);
 			extensionService.update(extension);

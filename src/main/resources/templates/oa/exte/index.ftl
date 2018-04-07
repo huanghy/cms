@@ -177,7 +177,7 @@
         	      title: '推广修改',
         	      shadeClose: true,
 				  shade: [0.8,'#393D49'],
-        	      area: ['800px', '600px'],
+        	      area: ['800px', '550px'],
         	      content: '${ctx!}/oa/exte/edit/' + id,
         	      end: function(index){
         	      	 $('#table_list').bootstrapTable("refresh");
@@ -192,7 +192,7 @@
         	      title: '推广添加',
         	      shadeClose: true,
 				  shade:[0.8,'#393D49'],
-        	      area: ['800px', '600px'],
+        	      area: ['800px', '550px'],
         	      content: '${ctx!}/oa/exte/add',
         	      end: function(index){
         	      	$('#table_list').bootstrapTable("refresh");

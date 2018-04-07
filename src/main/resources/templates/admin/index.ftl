@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-    <title> ${siteName}</title>
+    <title>个人推广后台系统V1.5</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <!--[if lt IE 9]>
@@ -21,8 +21,7 @@
         <!--左侧导航开始-->
          <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <a class="logoa" href="javascript:">
-                    	<img class="pull-left logos" width="60" height="60" src="<#if enterp.logo?exists>${enterp.logo}<#else>${ctx!}/hadmin/img/logos.png</#if>"/>
-                    	<span class="imlf"><#if enterp.name?exists>${enterp.name}</#if></span>
+                    	<span class="imlf">个人推广</span>
                     </a>
                     <!--<ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
@@ -68,7 +67,7 @@
                             <span class="nav-label">首页</span>
                         </a>
                     </li>
-                    <@shiro.hasPermission name="oa:new:index">
+                    <!--<@shiro.hasPermission name="oa:new:index">
 						<li>
 	                        <a href="#">
 	                            <i class="fa fa-file-text"></i>
@@ -93,7 +92,7 @@
 	                         </@shiro.hasPermission>
 	                        </ul>
 	                    </li>
-                    </@shiro.hasPermission>
+                    </@shiro.hasPermission>-->
 					<@shiro.hasPermission name="oa:exte:index">
 						<li>
 	                        <a href="#">
@@ -118,7 +117,7 @@
 	                            <span class="fa arrow"></span>
 	                        </a>
 	                        <ul class="nav nav-second-level">
-	                        	<@shiro.hasPermission name="system:org:index">
+	                        	<!--<@shiro.hasPermission name="system:org:index">
 		                        	<li>
 		                               <a class="J_menuItem" href="${ctx!}/sys/org/index">组织架构</a>
 		                            </li>
@@ -127,7 +126,7 @@
 	                            <li>
 	                               <a class="J_menuItem" href="${ctx!}/sys/enterp/index">企业设置</a>
 	                            </li>
-	                            </@shiro.hasPermission>
+	                            </@shiro.hasPermission>-->
 	                         <@shiro.hasPermission name="system:user:index">
 	                            <li>
 	                               <a class="J_menuItem" href="${ctx!}/admin/user/index">用户管理</a>
@@ -138,7 +137,7 @@
 	                                <a class="J_menuItem" href="${ctx!}/admin/role/index">角色管理</a>
 	                            </li>
 	                         </@shiro.hasPermission>
-	                         <@shiro.hasPermission name="system:group:index">
+	                         <!--<@shiro.hasPermission name="system:group:index">
 	                            <li>
 	                                <a class="J_menuItem" href="${ctx!}/admin/group/index">分组管理</a>
 	                            </li>
@@ -147,7 +146,7 @@
 	                            <li>
 	                                <a class="J_menuItem" href="${ctx!}/admin/commpost/index">职位管理</a>
 	                            </li>
-	                         </@shiro.hasPermission>
+	                         </@shiro.hasPermission>-->
 	                         <@shiro.hasPermission name="system:resource:index">
 	                            <li>
 	                                <a class="J_menuItem" href="${ctx!}/admin/resource/index">资源管理</a>

@@ -68,6 +68,18 @@
 		                                </div>
 		                            </div>
 		                             <div class="form-group">
+		                                <label class="col-sm-3 control-label">时间间隔：</label>
+		                                <div class="col-sm-8">
+		                                    <input id="period" name="period" class="form-control" type="text" value="<#if extension?exists>${extension.period}</#if>">
+		                                </div>
+		                            </div>
+		                             <div class="form-group">
+		                                <label class="col-sm-3 control-label">推广数量：</label>
+		                                <div class="col-sm-8">
+		                                    <input id="randomNum" name="randomNum" class="form-control" type="text" value="<#if extension?exists>${extension.randomNum}</#if>">
+		                                </div>
+		                            </div>
+		                             <div class="form-group">
 		                                <label class="col-sm-3 control-label">地域：</label>
 		                                <div class="col-sm-8">
 		                                    <input id="region" name="region" class="form-control" type="text" value="中国" readonly="readonly" >
@@ -80,7 +92,7 @@
 		                                </div>
 		                            </div>
 		                            <div class="form-group">
-		                                <label class="col-sm-3 control-label">广告类型：</label>
+		                                <label class="col-sm-3 control-label">任务用户：</label>
 		                                <div class="col-sm-8">
 		                                	<input type="hidden" id="humanName" name="humanName" value="${extension.humanName}">
 		                                    <select  id="humanId" name="humanId" class="form-control">
@@ -147,6 +159,14 @@
     	        required: true,
     	      },
     	      unitPrice: {
+    	      	number:true,
+    	        required: true
+    	      },
+    	      period: {
+    	      	number:true,
+    	        required: true
+    	      },
+    	      randomNum: {
     	      	number:true,
     	        required: true
     	      }

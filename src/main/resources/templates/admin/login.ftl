@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <title> - 登录</title>
+    <title> - 个人推广后台系统V1.5</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link href="${ctx!}/hadmin/css/bootstrap.min.css" rel="stylesheet">
@@ -23,10 +23,8 @@
     </script>
 
 </head>
-
 <body class="signind">
 	<div class="logoim">
-		<img src="${ctx!}/hadmin/img/logind.png"/>
 	</div>
 	<div class="eash">
 	  <img src="${ctx!}/hadmin/img/shougd.png"/>
@@ -42,8 +40,7 @@
         </#if>
         <form method="post" action="${ctx!}/admin/login" id="frm">
             <h4 class="no-margins">
-            	<strong>欢迎,</strong>
-            	<span>登录办公oa系统</span>
+            	<font size="4" >个人团队推广系统</font>
             </h4>
             <div class="titd">用户名/user:</div>
             <input type="text" class="form-control uname" name="username" id="username" placeholder="用户名" />

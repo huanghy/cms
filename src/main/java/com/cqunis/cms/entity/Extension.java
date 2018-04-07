@@ -58,6 +58,19 @@ public class Extension extends BaseEntity {
 
 	@Column(name="task_state")
 	private int taskState;
+	
+	/***多久执行一次
+	 */
+	@Column(name="period")
+	private int period;
+	
+	/**随机数量**/
+	@Column(name="random_num")
+	private int randomNum;
+	
+	@Column(name="exe_state")
+	private int exeState;
+	
 
 	@Column(name="unit_price")
 	private String unitPrice;
@@ -194,4 +207,59 @@ public class Extension extends BaseEntity {
 	public void setDes(String des) {
 		this.des = des;
 	}
+
+
+
+	/**
+	 * @return the period
+	 */
+	public int getPeriod() {
+		return period;
+	}
+
+
+
+	/**
+	 * @param period the period to set
+	 */
+	public void setPeriod(int period) {
+		this.period = period;
+	}
+
+
+
+	/**
+	 * @return the randomNum
+	 */
+	public int getRandomNum() {
+		return randomNum;
+	}
+
+
+
+	/**
+	 * @param randomNum the randomNum to set
+	 */
+	public void setRandomNum(int randomNum) {
+		this.randomNum = randomNum;
+	}
+
+
+
+	/**
+	 * @return the exeState
+	 */
+	public int getExeState() {
+		return exeState;
+	}
+
+
+
+	/**
+	 * @param exeState the exeState to set
+	 */
+	public void setExeState(int exeState) {
+		this.exeState = exeState;
+	}
+	
 }
