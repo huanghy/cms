@@ -1,0 +1,62 @@
+.clearfix {
+    zoom: 1
+}
+.clearfix:after,.clearfix:before {
+    content: "";
+    display: table
+}
+.clearfix:after {
+    visibility: hidden;
+    font-size: 0;
+    height: 0
+}
+
+body {
+    font-family: PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,Helvetica Neue,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #657180;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+article,aside,blockquote,body,button,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,section,td,textarea,th,ul {
+    margin: 0;
+    padding: 0
+}
+button,input,select,textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit
+}
+ol,ul {
+    list-style: none
+}
+img {
+    border-style: none
+}
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+a {
+    color: #222;
+    background: 0 0;
+    text-decoration: none;
+    outline: 0;
+    cursor: pointer;
+    transition: color .2s ease
+}
+a:active,a:hover {
+    color: #406599
+}
+
+a:active,a:hover {
+    outline: 0;
+    text-decoration: none
+}
+a[disabled] {
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none
+}

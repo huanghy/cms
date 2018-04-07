@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>申请流程</title>
+		<link href="/hadmin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+	    <link href="/hadmin/css/bootstrap-treeview.css?v=3.3.6" rel="stylesheet">
+	    <link href="/hadmin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+	    <link href="/hadmin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	    <link href="/hadmin/css/animate.css" rel="stylesheet">
+	    <link href="/hadmin/css/style.css?v=4.1.0" rel="stylesheet">	      	   
+	</head>
+	<body class="gray-bg">
+		<div class="wrapper cf  animated fadeInRight">
+			 <div class="row">
+			 	<div class="col-sm-12 fttit">
+			 		文件中心>文件类型
+			 	</div>
+			 	<div class="col-sm-12">
+				   <div class="ibox">
+				   
+					   	<div class="ibox-content cf">
+					   		<div class="row row-lg">
+					   			<div class="col-sm-12 pr">
+					   				<button class="btn btn-success btnab">
+					   					<i class="fa fa-plus"></i>
+					   					 新增类型
+					   				</button>
+					   				
+					   				<div class="example-wrap">
+										<div class="example">
+											<table id="table_list"></table>
+										</div>
+									</div>
+					   			</div>
+					   		</div>
+					   	</div>
+				   </div>	
+			   </div>
+			   
+			 </div> 
+		</div>	
+	</body>
+	  <script src="/hadmin/js/jquery.min.js"></script>
+	  <script src="/hadmin/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>	
+	<script>
+		$("#table_list").bootstrapTable({
+						//使用get请求到服务器获取数据
+						//method: "POST",
+						//必须设置，不然request.getParameter获取不到请求参数
+						//contentType: "application/x-www-form-urlencoded",
+						//获取数据的Servlet地址
+						//url: "${ctx!}/admin/resourcesort/list",
+						//表格显示条纹
+						data:[{resourceName:'集团新闻',sort:0,parent:"是"}],
+						classes: "table table-hover filelist",
+						striped: true,
+						//启动分页
+						pagination: true,
+						//每页显示的记录数
+						pageSize: 10,
+						//当前第几页
+						pageNumber: 1,
+						//记录数可选列表
+						pageList: [5, 10, 15, 20, 25],
+						//是否启用查询
+						search: true,
+						queryParamsType: "undefined",
+						clickToSelect: true,
+						onClick: function(row) {
+
+						},
+						//json数据解析
+						responseHandler: function(res) {
+							return {
+								"rows": res.content,
+								"total": res.totalElements
+							};
+						},
+						//数据列
+						columns: [{
+								checkbox: true
+							},
+							{
+								title: "类型名称",
+								field: "resourceName"
+							}, 
+							{
+								title: "排序",
+								field: "sort"
+							} ,
+							{
+								title: "是否显示",
+								field: "parent",
+								formatter: function(value, row, index) {
+									if(row.parent != null) {
+										return row.parent.resourceName;
+									} else {
+										return '--';
+									}
+								}
+							},
+							{
+								title: "操作",
+								field: "empty",
+								formatter: function(value, row, index) {
+									//var operateHtml = '<@shiro.hasPermission name="resource:resourcesort:add"><button class="btn btn-primary btn-xs" type="button" onclick="edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;</@shiro.hasPermission>';
+									//operateHtml = operateHtml + '<@shiro.hasPermission name="resource:resourcesort:deleteBatch"><button class="btn btn-danger btn-xs" type="button" onclick="del(\'' + row.id + '\')"><i class="fa fa-remove"></i>&nbsp;删除</button></@shiro.hasPermission>';
+									var operateHtml="<i class='fa fa-edit warter'></i>"+"<i class='fa fa-trash-o warter'></i>"
+									return operateHtml;
+								}
+							}
+						]
+					});
+
+
+	</script>
+</html>

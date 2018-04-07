@@ -1,0 +1,17 @@
+nstraint = null;
+            switch (question) {
+                case this.questionType.YESNOINITIAL:
+                case this.questionType.YESNOCONFIRMREGION:
+                    constraint = this.yesNoConstraints;
+                    break;
+                case this.questionType.OTHERCONSTRAINTS:
+                    constraint = this.regionConstraints;
+                    break;
+            };
+            CloudExperienceHostAPI.Speech.SpeechRecognition.promptForCommandsAsync(stringToSpeak, constraint).done((result) => {
+                if (result == null) {
+                    if ((constraint != null) && !this.processingFlag()) {
+                        // result can be null either if there is no input from user or the user speaks unknown voice commands until the timeout
+                        this.speak(this.resourceStrings.FinalRegionVoiceOver, this.questionType.FINAL);
+                    }
+                

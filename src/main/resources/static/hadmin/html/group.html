@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组强加构</title>
+		<link href="/hadmin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+	    <link href="../css/bootstrap-treeview.css?v=3.3.6" rel="stylesheet">
+	    <link href="/hadmin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+	    <link href="/hadmin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	    <link href="/hadmin/css/animate.css" rel="stylesheet">
+	    <link href="../css/style.css?v=4.1.0" rel="stylesheet">	    
+	    <style>
+	    	.list-group-item:first-child {
+				border-radius: 0px!important;
+			}
+			.list-group-item {
+				border: none;
+			}
+			.treeview .list-group .list-group-item:hover{background:#D8E4F2}
+			.taids{padding:10px 18px 10px 10px;margin-top:15px;}
+			#tree1 .list-group-item:last-child{border-radius:0px;}
+			.bootstrap-table .comm>thead>tr>th{border-left:none;}
+			.fixed-table-container tbody td{border-left:none !important}
+			.fixed-table-container thead th{border-left:none!important}
+			table.tablist tr td a{color:#666;}
+			.nav.nav-tabd li{width:100%;}
+			#tree1 .list-group,#tree2 .list-group{height:260px;}
+	    </style>
+	</head>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content cf  animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox">
+						<div class="ibox-title">
+							<div class="affair-tit">
+								组织架构
+							</div>
+						</div>
+						<!--<div class="row">
+							<div class="col-sm-4">
+								<div class="txtbox txtlist">
+									<i class="fa fa-search"></i>
+									<input class="input" type="text" id="_searchText" placeholder="搜索联系人/部门/单位/岗位"/>
+									<a href="javascript:void(0)" class="seachbtn" id="_search" >搜索</a>
+								</div>
+							</div>
+							<div class="col-sm-8"></div>
+						</div>-->
+						<div class="row pb20">
+							<div class="col-sm-3">
+								 <div class="ulbox ulboxc">
+							       <ul  class="nav nav-tabd">
+										<li class="active">
+											<a href="#home" data-toggle="tab">
+												单位管理
+											</a>
+										</li>				
+									</ul>
+									<div  class="tab-content">
+										<div class="tab-pane fade newlist in active" id="home">
+											<div id="tree1"></div>											
+										</div>										
+									</div>
+									<a class="addbtn" href="javascript:">+添加</a>
+								</div>								
+							</div>
+							<div class="col-sm-3">								
+								<div class="ulbox ulboxc">
+							       <ul class="nav nav-tabd">
+										<li class="active">
+											<a href="#home" data-toggle="tab">
+												部门管理
+											</a>
+										</li>				
+									</ul>
+									<div  class="tab-content">
+										<div class="tab-pane fade newlist in active" id="home">
+											<div id="tree2"></div>											
+										</div>										
+									</div>
+								 <a class="addbtn" href="javascript:">+添加</a>
+							  </div>
+							</div>
+							<div class="col-sm-6">
+								<div class="departbox cf">
+									<span class="depart">子部门</span>
+									<a href="javascript:"  class="addpost">+添加岗位</a>
+								</div>
+								<div class="p10">
+								 <table id="table_list"></table>
+								</div> 
+							</div>	
+						</div>
+						
+					</div>
+				</div>	
+			</div>	
+		</div>	
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap-treeview.js"></script>
+	<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>	    
+	<script>
+			$(function() {
+			var tree = [{
+					text: "江南水厂",
+					nodes: [{
+							text: "工程部",
+							nodes: [{
+									text: "工程1组"
+								},
+								{
+									text: "工程2组"
+								}
+							]
+						},
+						{
+							text: "法务部"
+						}
+					]
+				},
+				{
+					text: "江北水厂"
+				},
+				{
+					text: "河北水厂"
+				},
+				{
+					text: "河南水厂"
+				},
+			];
+			//表格
+			var tabarr=
+		          {data:[
+		          {tjx:"小张",bjd:"江南水厂",jqntj:"工程1部",tb:"工程师"},
+			      {tjx:"小李",bjd:"江北水厂",jqntj:"工程2部",tb:"施工员"},
+			      ],
+			      columns:[
+
+			            {
+					        title: "姓名",
+					        field: "tjx"
+					    },{
+					        title: "所属单位",
+					        field: "bjd"
+					    },
+					    {
+					        title: "所属部门",
+					        field: "jqntj"
+					    },
+					    {
+					        title: "所属岗位",
+					        field: "tb"
+					    },
+					    {
+					        title: "操作",
+					        field: "empty",
+		                    formatter: function (value, row, index) {	
+		                        var operateHtml = '<i class="fa fa-edit warter"></i>';
+		                    	operateHtml = operateHtml + '<i class="fa fa-trash-o warter"></i>';
+		                        return operateHtml;
+		                    }				       
+					    },
+				    ]
+		          }
+			
+			$('#tree1').treeview({
+				'classe':'trbox',
+				data: tree
+			});
+			$('#tree2').treeview({
+				levels:5,
+				'classe':'trbox',
+				data: tree
+			});
+		   
+		   
+		   $("#table_list").bootstrapTable({
+				'classes':"table table-hover filelist",
+				data:tabarr.data,
+				columns:tabarr.columns 
+			});
+		})
+	</script>
+	
+</html>

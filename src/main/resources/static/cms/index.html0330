@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>内容管理</title>
+</head>
+<link href="/hadmin/css/bootstrap.min.css" rel="stylesheet">
+<link href="/hadmin/css/font-awesome.css" rel="stylesheet">
+<link href="/hadmin/css/animate.css" rel="stylesheet">
+<link href="/cms/css/index.css" rel="stylesheet">
+<!--jquery-->
+<script src="/hadmin/js/jquery.min.js"></script>
+<!--bootstrap-->
+<script src="/hadmin/js/bootstrap.min.js"></script>
+<!-- layer -->
+<script src="/hadmin/js/plugins/layer/layer.min.js"></script>
+<script type="text/javascript" src="/hadmin/js/vue.js"></script>
+<script src="/cms/js/index.js"></script>
+<body>
+<nav class="navbar navbar-default"> 
+    <div>多少</div>
+</nav>
+<div class="container"  id="_container" >
+    <div class="row secondContainer">
+        <div class="col-md-2 col-sm-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li v-for="(section, index) in sections" v-class="index==arrayindex?'active':''" ><a href="#">{{section.secName}}</a></li>
+            </ul>
+        </div>
+        <div class="col-md-7 col-sm-7">
+            <div class="row">
+                <div id="myCarousel" class="carousel slide">
+                    <!-- 轮播（Carousel）项目 -->
+                    <div class="carousel-inner">
+                    	<div class="item active">
+                            	<img src="/cms/img/2.jpg" alt="First slide">
+                        	</div>
+                        <div class="item">
+                            <img src="/cms/img/2.jpg" alt="Second slide">
+                        </div>
+                        <div class="item">
+                            <img src="/cms/img/3.jpg" alt="Third slide">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="list-group" >
+                    <button type="button" class="list-group-item" v-for="(news, index) in newsList" v-on:click="detail(news.id)" >
+                    	{{news.title}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 carouselCol">
+            <div class="row">
+                <div class="row">
+                    <div id="myCarouse2" class="carousel slide">
+                        <!-- 轮播（Carousel）项目 -->
+                        <div class="carousel-inner">
+                        	<div class="item active">
+                            	<img src="/cms/img/2.jpg" alt="First slide">
+                        	</div>
+                            <div class="item">
+                                <img src="/cms/img/2.jpg" alt="Second slide">
+                            </div>
+                            <div class="item">
+                                <img src="/cms/img/3.jpg" alt="Third slide">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">24小时新闻</div>
+                        <ul class="list-group">
+                            <li class="list-group-item" v-for="(twfourNew, index) in twfourNews" v-on:click="detail(twfourNew.id)" >
+                            	{{twfourNew.title}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

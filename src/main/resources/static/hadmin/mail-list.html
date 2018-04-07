@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="keywords" content="">
+	    <meta name="description" content="">
+	    <link rel="shortcut icon" href="favicon.ico">
+	    <link href="../hadmin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+	    <link href="../hadmin/css/bootstrap-treeview.css?v=3.3.6" rel="stylesheet">
+	    <link href="../hadmin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+	    <link href="../hadmin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	    <link href="../hadmin/css/animate.css" rel="stylesheet">
+	    <link href="../hadmin/css/style.css?v=4.1.0" rel="stylesheet">
+	    <link href="../hadmin/css/plugins/datapicker/datepicker3.css"> 
+	    <link href="../umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+	    <script src="../hadmin/js/jquery.min.js "></script>
+		<script src="../hadmin/js/bootstrap.min.js "></script>
+		<script src="../hadmin/js/bootstrap-treeview.js "></script>
+		<script src="../hadmin/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		 <script src="../hadmin/js/plugins/layer/layer.min.js?v=${version!}"></script>
+		<style>
+			.list-group-item:first-child {
+				border-radius: 0px!important;
+			}
+			
+			.list-group-item {
+				border: none;
+			}
+			.treeview .list-group .list-group-item:hover{background:#D8E4F2}
+			.taids{padding:10px 18px 10px 10px;margin-top:15px;}
+			#tree1 .list-group-item:last-child{border-radius:0px;}
+			.bootstrap-table .comm>thead>tr>th{border-left:none;}
+			.fixed-table-container tbody td{border-left:none !important}
+		</style>
+	</head>
+	<body class="gray-bg">
+		<div class="wrapper cf  animated fadeInRight">
+			<div class="row mt20">
+				<div class="col-sm-12">
+				   <div class="ibox">
+				   	  <div class="ibox-title">
+							<div class="affair-tit">通讯录</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4">
+								<div class="txtbox txtlist">
+									<i class="fa fa-search"></i>
+									<input class="input" type="text" placeholder="搜索联系人/部门/单位/岗位"/>
+									<a href="javascript:" class="seachbtn">搜索</a>
+								</div>
+							</div>
+							<div class="col-sm-8"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4">
+								 <div class="ulbox ulboxc">
+							       <ul  class="nav nav-tabd">
+										<li class="active">
+											<a href="#home" data-toggle="tab">
+												组织架构
+											</a>
+										</li>
+										<li>
+											<a href="#ios" data-toggle="tab">岗位关系</a>
+										</li>						
+									</ul>
+									<div  class="tab-content">
+										<div class="tab-pane fade newlist in active" id="home">
+											<div id="tree1"></div>
+										</div>
+										<div class="tab-pane fade newlist" id="ios">
+											<div id="tree2"></div>
+										</div>						
+									</div>
+								</div> 	
+							</div>
+							<div class="col-sm-8">
+								<div class="mt20 pertab cf">
+									<div class="pull-left">
+										<i class="fa fa-user-md"></i>
+									    <span>部门成员</span>
+									</div>
+									<div class="pull-right mr10">
+										重庆平川物流>财务部结算>财务小分队一支队(共2人)
+									</div>
+								</div>
+									<div class="taids">
+										<table id="tablist" class="tablist"></table>
+									</div>
+								
+							</div>
+						</div>
+				   </div>
+				</div>
+		   </div>
+		</div>
+	</body>
+	<script>
+		var tree1=[{
+					text: "江南水厂1",
+					nodes: [{
+							text: "工程部",
+							nodes: [{
+									text: "工程1组"
+								},
+								{
+									text: "工程2组"
+								}
+							]
+						},
+						{
+							text: "法务部"
+						}
+					]
+				},
+				{
+					text: "江北水厂"
+				},
+				{
+					text: "河北水厂"
+				},
+				{
+					text: "河南水厂"
+				},
+			];
+			var tree2=[{
+					text: "江南水厂2",
+					nodes: [{
+							text: "工程部",
+							nodes: [{
+									text: "工程1组"
+								},
+								{
+									text: "工程2组"
+								}
+							]
+						},
+						{
+							text: "法务部"
+						}
+					]
+				},
+				{
+					text: "江北水厂"
+				},
+				{
+					text: "河北水厂"
+				},
+				{
+					text: "河南水厂"
+				},
+			];
+			$('#tree1').treeview({
+				data: tree1
+			});
+			$('#tree2').treeview({
+				data:tree2
+			});
+			//表格
+			$("#tablist").bootstrapTable({
+			    classes:"table table-hover comm",
+			    clickToSelect:false,
+			    onClickRow:function(row){
+			    	layer.open({
+				      type: 2,
+				      title: '个人名片',
+				      shade:false,
+				      skin: 'persond',
+				      area: ['480px', '320px'],
+				      shade: [0.8, '#393D49'],
+				      skin:"pr-select",
+				      content:'./html/person.html',
+				      end: function(index){},
+				      success: function(layero, index){
+				      	
+		    	      },
+				      zIndex:19891015
+				    });
+			    },
+			    //json数据解析
+			    responseHandler: function(res) {
+			        return {
+			            "rows": res.content,
+			            "total": res.totalElements
+			        };
+			    },
+			    data:[{ddmc:"徐小猫",ddfl:"出纳员",zxr:"136524444442",zxsj:"www123@163.com"},{ddmc:"徐小猫2",ddfl:"运维",zxr:"18716231115",zxsj:"www233@163.com"}],			  
+			    //数据列
+			    columns: [{
+			        checkbox:true
+			    },
+			    {
+			        title: "姓名",
+			        field: "ddmc",			        
+			    },{
+			        title: "岗位",
+			        field: "ddfl"
+			    },
+			    {
+			        title: "手机号码",
+			        field: "zxr"
+			    },
+			    {
+			        title: "邮箱",
+			        field: "zxsj"
+			    }],			    
+			});
+	</script>
+</html>

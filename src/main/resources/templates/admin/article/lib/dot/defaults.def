@@ -1,0 +1,22 @@
+package com.xrender.cloud.render.service.impl;
+
+import com.xrender.cloud.render.dao.RequestParaMapper;
+import com.xrender.cloud.common.pojo.Criteria;
+import com.xrender.cloud.common.utils.WebUtil;
+import com.xrender.cloud.render.pojo.RequestPara;
+import com.xrender.cloud.render.service.RequestParaService;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class RequestParaServiceImpl implements RequestParaService {
+    @Autowired
+    private RequestParaMapper requestParaMapper;
+
+    private static final Logger logger = LoggerFactory.getLogger(RequestParaServiceImpl.class);
+
+    public int countByParams(Criteria example) {
+        int count = this.requestParaMapper.countByPa

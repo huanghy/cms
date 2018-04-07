@@ -1,0 +1,26 @@
+.navbar  div{
+    text-align: center;
+    margin-top: 1.5%;
+}
+.carouselCol .row {
+    margin-left: 0px!important;
+}
+.comment {
+    margin-top: 2%;
+}
+.comment .form-group{
+    width: 80%!important;
+}
+.comment input{
+    width: 100%!important;
+}
+.commentContent {
+    margin-top: 1%;
+    border-top: 1px solid #ececec;
+}
+.commentContent .info,.commentContent .content{
+    margin-top: 1%;
+}
+.commentContent .info div{
+    float: right;
+}

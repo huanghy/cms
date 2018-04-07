@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/cms/css/jinri.css"/>
+    <link rel="stylesheet" href="/cms/css/common.css"/>
+    <link rel="stylesheet" href="/cms/css/autocomplete.css">
+</head>
+<body>
+<div class="toutiao-header">
+    <div class="topbar">
+        <div class="tb-left">
+            <div class="tb-weather" id="weather">
+                <div class="weather-brief">
+                    <span>&nbsp;北京</span>
+                    <span>晴</span>
+                    <span>7°&nbsp;&nbsp;/&nbsp;&nbsp;20°</span>
+                    <span class="more">∨</span>
+                </div>
+                <div class="weather-details" id="w_details">
+                    <div class="d-header">
+                        <span class="d-headerOne">&nbsp;北京</span>
+                        <span class="d-headerTwo">南风3级</span>
+                        <span class="d-headerThree" style="background-color: rgb(255, 159, 45);">轻度&nbsp;108</span>
+                    </div>
+                    <ul class="d-content">
+                        <li class="d-contentDay">
+                            <span>今天</span>
+                            <div>晴</div>
+                            <span>7°/20°</span>
+                        </li>
+                        <li class="d-contentDay">
+                            <span>明天</span>
+                            <div>多云</div>
+                            <span>8°/18°</span>
+                        </li>
+                        <li class="d-contentDay">
+                            <span>后天</span>
+                            <div>多云</div>
+                            <span>9°/23°</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="_container" >
+    <div class="c-left">
+        <div>
+            <div class="channel" id="channel">
+                <a href="#" class="logo"><img src="http://s3.pstatp.com/toutiao/static/img/logo.201f80d.png" alt="今日头条" style="width: 108px; height: 27px;" /></a>
+                <!---->
+                <ul>
+                    <li v-for="(section, index) in sections" >
+                    	<a href="javascript:void(0)" target="_blank" v-if="index==arrayindex" class="channel-item active" v-on:click="selectSec(section.id,index)"  >
+                    		<span>
+		                    	{{section.secName}}
+                    		</span>
+                    	</a>
+                    	<a href="javascript:void(0)" target="_blank" v-if="index!=arrayindex" class="channel-item" v-on:click="selectSec(section.id,index)" >
+                    		<span>
+		                    	{{section.secName}}
+                    		</span>
+                    	</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="c-middle">
+        <div id="lunbobox">
+            <div class="lunbo">
+                <a href="#"><img src="img/yaowen.jpg"></a>
+                <a href="#"><img src="img/shehui.jpg"></a>
+                <a href="#"><img src="img/yule.jpg"></a>
+                <a href="#"><img src="img/tiyu.jpg"></a>
+                <a href="#"><img src="img/junshi.jpg"></a>
+                <a href="#"><img src="img/mingxing.jpg"></a>
+            </div>
+            <ul class="slide-tab">
+                <li class="tabs-active">要闻</li>
+                <li>社会</li>
+                <li>娱乐</li>
+                <li>体育</li>
+                <li>军事</li>
+                <li>明星</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="news">
+                <div id="lists">
+                	<div class="item" v-for="(news, index) in newsList" v-on:click="detail(news.id)" >
+                		<img class="news-picture" src="img/news1.jpg">
+                		<h2 class="news-title">
+                			{{news.title}}
+                		</p>
+                		</h2>
+                	</div>
+                </div>
+                <div class="nodata"></div>
+            </div>
+        </div>
+    </div>
+    <div class="c-right">
+        <div id="search">
+            <div class="wrapper">
+                <div id="search-form"></div>
+                <div id="message"></div>
+            </div>
+        </div>
+        <div class="outer">
+            <div class="login inner">
+                <p class="login-msg"> 登录后可以保存您的浏览喜好、评论、收藏，并与APP同步更可以发布微头条 </p>
+                <a href="https://sso.toutiao.com"><button class="login-button">登录</button></a>
+                <ul class="third-login">
+                    <li class="sns weibo"><span>微博</span></li>
+                    <li class="sns qq"><span>QQ</span></li>
+                    <li class="sns weixin"><span>微信</span></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div id="hotNewsWrap" class="bui-box">
+            <div class="pane-module">
+                <div class="module-head">
+                    24小时热闻
+                </div>
+                <ul ga_event="click_hot_news" class="module-content article-list">
+                    <li class="article-item" v-for="(twfourNew, index) in twfourNews"  >
+                    	<a href="javascript:void(0)" v-on:click="detail(twfourNew.id)"  target="_blank" class="news-link">
+	                        <div class="module-pic news-pic">
+	                            <img src="//p1.pstatp.com/list/240x240/6edc000375071aeeff76" lazy="loaded" />
+	                        </div>
+	                        <div class="news-inner">
+	                            <p class="module-title">
+	                            	{{twfourNew.title}}
+	                            </p>
+	                        </div>
+                    	</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="imagindexhover" name="home_right*bottom_1" class="imagindexhover right-img" style="display: none;" ad-cursor="1" ad_name="h_300*250_TB_340" done="1" show="">
+            </div>
+        </div>
+
+
+        <div class="pane-module">
+            <div class="module-head">
+            </div>
+            <ul class="module-content picture-list" id="lazyPicture">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            </ul>
+        </div>
+
+
+        <div class="pane-module justify">
+            <div class="module-head">
+                更多
+            </div>
+            <ul class="more-items-content">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </ul>
+        </div>
+
+
+        <div class="pane-module justify">
+            <div class="module-head">
+                友情链接
+            </div>
+            <ul class="friend-links-content">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </ul>
+        </div>
+
+        <div class="company justify">
+            <p class="J-company-name"> &copy; 2018 今日头条</p>
+            <a href="http://www.12377.cn/" target="_blank" ga_event="click_about">中国互联网举报中心</a>
+            <a href="http://www.miibeian.gov.cn/" target="_blank" ga_event="click_about">京ICP证140141号</a>
+            <div>
+                <a href="http://www.miibeian.gov.cn/" target="_blank" ga_event="click_about">京ICP备12025439号-3 </a>
+                <a href="/license/" target="_blank" class="icp">网络文化经营许可证</a>
+            </div>
+            <p>京-非经营性-2016-0081</p>
+            <p>互联网药品信息服务资格证书</p>
+            <a href="/a3642705768/" target="_blank">跟帖评论自律管理承诺书</a>
+            <span>违法和不良信息举报：010-58341833</span>
+            <span>公司名称：北京字节跳动科技有限公司</span>
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002002023" target="_blank" ga_event="click_about"><img src="//s3.pstatp.com/toutiao/static/img/gongan.d0289dc.png" />&nbsp;京公网安备 11000002002023号</a>
+        </div>
+    </div>
+    <div class="goTop" id="goTop">
+        TOP
+    </div>
+</div>
+</body>
+</html>
+<!--jquery-->
+<script src="/hadmin/js/jquery.min.js"></script>
+<!-- layer -->
+<script src="/hadmin/js/plugins/layer/layer.min.js"></script>
+<script type="text/javascript" src="/hadmin/js/vue.js"></script>
+<script src="/cms/js/index.js"></script>
+<script src="/cms/js/jinri.js"></script>
+<script src="/cms/js/autocomplete.js"></script>

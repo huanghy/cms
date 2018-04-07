@@ -1,0 +1,26 @@
+/*
+ * Copyright 2015-2016 milanosoft All rights reserved.
+ * Support: http://www.milanosoft.com
+ * License: http://www.milanosoft.com/license
+ */
+package com.mls.platform.kernel.listener;
+
+import net.sf.ehcache.CacheException;
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
+import org.springframework.stereotype.Component;
+
+/**
+ * Listener - 缓存
+ * 
+ * @author Milanosoft Team
+ * @version 4.0
+ */
+@Component("cacheEventListener")
+public class CacheEventListener implements net.sf.ehcache.event.CacheEventListener {
+
+	/**
+	 * 元素回收调用
+	 * 
+	 * @param ehcache
+	 *    

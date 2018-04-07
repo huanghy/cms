@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>选择人员部门单位</title>
+		<link href="../hadmin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+		<link href="../hadmin/css/bootstrap-treeview.css?v=3.3.6" rel="stylesheet">
+		<link href="../hadmin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+		<link href="../hadmin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../hadmin/css/animate.css" rel="stylesheet">
+		<link href="../hadmin/css/style.css?v=4.1.0" rel="stylesheet">
+		<!--<link href="../hadmin/css/plugins/datapicker/datepicker3.css">-->
+		<!--<link href="../hadmin/js/jquery.treeview.css" rel="stylesheet">-->
+		<style>
+			.list-group-item:first-child {
+				border-radius: 0px!important;
+			}
+			
+			.list-group-item {
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body class="fo">
+		<div class="row">
+			<div class="col-sm-7">
+				<div class="txtbox">
+					<i class="fa fa-search"></i>
+					<input class="input" type="text" placeholder="搜索联系人/部门/单位/岗位"/>
+				</div>
+			</div>
+			<div class="col-sm-5"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-7">
+			   <div class="ulbox">
+			       <ul  class="nav nav-tabd">
+						<li class="active">
+							<a href="#home" data-toggle="tab">
+								组织架构
+							</a>
+						</li>
+						<li>
+							<a href="#ios" data-toggle="tab">岗位关系</a>
+						</li>						
+					</ul>
+					<div  class="tab-content">
+						<div class="tab-pane fade newlist in active" id="home">
+							<div id="tree1"></div>
+						</div>
+						<div class="tab-pane fade newlist" id="ios">
+							<div id="tree2"></div>
+						</div>						
+					</div>
+				</div> 	
+		   </div>
+		   <div class="col-sm-5">
+		   	  <div class="selectbox">
+		   	  	  <div class="title">
+		   	  	  	  <span>已选对像</span>
+		   	  	  </div>
+		   	  	  <ul class="seleul">
+		   	  	  	<li>
+		   	  	  		<span>徐小猫</span>
+		   	  	  		<i class="del">-</i>
+		   	  	  	</li>
+		   	  	  </ul>
+		   	  </div>
+		   </div>
+		</div>
+		<script src="../hadmin/js/jquery.min.js "></script>
+		<script src="../hadmin/js/bootstrap.min.js "></script>
+		<script src="../hadmin/js/bootstrap-treeview.js "></script>
+	</body>
+	<script>
+            var tree1=[{
+					text: "江南水厂1",
+					nodes: [{
+							text: "工程部",
+							nodes: [{
+									text: "工程1组"
+								},
+								{
+									text: "工程2组"
+								}
+							]
+						},
+						{
+							text: "法务部"
+						}
+					]
+				},
+				{
+					text: "江北水厂"
+				},
+				{
+					text: "河北水厂"
+				},
+				{
+					text: "河南水厂"
+				},
+			];
+			var tree2=[{
+					text: "江南水厂2",
+					nodes: [{
+							text: "工程部",
+							nodes: [{
+									text: "工程1组"
+								},
+								{
+									text: "工程2组"
+								}
+							]
+						},
+						{
+							text: "法务部"
+						}
+					]
+				},
+				{
+					text: "江北水厂"
+				},
+				{
+					text: "河北水厂"
+				},
+				{
+					text: "河南水厂"
+				},
+			];
+			$('#tree1').treeview({
+				data: tree1
+			});
+			$('#tree2').treeview({
+				data:tree2
+			});
+	</script>
+</html>

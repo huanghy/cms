@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>内容详情</title>
+</head>
+<link href="/hadmin/css/bootstrap.min.css" rel="stylesheet">
+<link href="/hadmin/css/font-awesome.css" rel="stylesheet">
+<link href="/hadmin/css/animate.css" rel="stylesheet">
+<link href="/cms/css/index.css" rel="stylesheet">
+<!--jquery-->
+<script src="/hadmin/js/jquery.min.js"></script>
+<!--bootstrap-->
+<script src="/hadmin/js/bootstrap.min.js"></script>
+<!-- layer -->
+<script src="/hadmin/js/plugins/layer/layer.min.js"></script>
+<script type="text/javascript" src="/hadmin/js/vue.js"></script>
+<script src="/cms/js/detail.js"></script>
+<body>
+<nav class="navbar navbar-default">
+    <div>头部</div>
+</nav>
+<div class="container" id="_container" >
+    <div class="row">
+        <div v-html="content"></div>
+    </div>
+    <div class="row comment">
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="输入评论">
+            </div>
+            <button type="submit" class="btn btn-default">提交</button>
+        </form>
+    </div>
+    <div class="row commentContent">
+        <div  v-for="(reply, index) in replys" >
+            <div class="userInfo">
+                <a>李四</a>
+                <span>1小时前</span>
+            </div>
+            <div class="content">
+                <span>{{reply.title}}</span>
+            </div>
+            <div class="info">
+                <a>回复</a>
+                <div>
+                    <span>点赞</span>
+                    <span>拉黑</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

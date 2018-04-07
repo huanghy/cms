@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>事务</title>
+	    <meta name="keywords" content="">
+	    <meta name="description" content="">
+	    <link rel="shortcut icon" href="favicon.ico">
+	    <link href="/hadmin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+	    <link href="/hadmin/css/bootstrap-treeview.css?v=3.3.6" rel="stylesheet">
+	    <link href="/hadmin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+	    <link href="/hadmin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	    <link href="/hadmin/css/animate.css" rel="stylesheet">
+	    <link href="/hadmin/css/style.css?v=4.1.0" rel="stylesheet">
+	    <link href="/hadmin/css/plugins/datapicker/datepicker3.css"> 
+	 </head>
+	<body class="gray-bg">
+		<div class="wrapper cf  animated fadeInRight">
+			 <div class="row">
+			 	<div class="col-lg-12 fttit">			 	
+					个人办公>待我审批>审批详情
+			 	</div>			 	
+				<div class="col-sm-12">
+				   <div class="ibox">
+					<div class="ibox-title">
+						<div class="affair-tit">
+							${modul.modulName}申请
+						</div>	
+					</div>	
+					<div class="col-sm-12 pr">						
+							<img class="pim" src="../img/pass-icon.png">
+							<img class="pim" src="../img/stop-icon.png">
+				 		<a href="javascript:history.back(-1);" class="btn cel mt10 mb5">
+				 			<返回
+				 		</a>
+				 		<a href="javascript:" class="view pull-right mr10">
+				 			<i class="fa fa-eye"></i>
+				 			流程全览
+				 		</a>
+				 	</div>
+					<input type="hidden" name="dir" id="dir" value="tran" />
+					<input type="hidden" name="currHuman" id="currHuman" value="${currentUser.humanName}" />
+					<input type="hidden" name="currentTime" id="currentTime" value="<#if currentTime?exists >${currentTime}</#if>" />
+					<input type="hidden" name="currentDay" id="currentDay" value="<#if currentDay?exists >${currentDay}</#if>" />
+					<input type="hidden" name="currentUnitName" id="currentUnitName" value="<#if currentUnit?exists >${currentUnit.unitName}</#if>" />
+					<input type="hidden" name="currentDepartmentName" id="currentDepartmentName" value="<#if currentDepartment?exists >${currentDepartment.name}</#if>" />
+					<input type="hidden" name="currentPostName" id="currentPostName" value="<#if currentPost?exists >${currentPost.name}</#if>" />
+					<form class="form-horizontal m-t" id="frm" method="post" action="javascript:void(0)" >
+						<div class="form-group">							 
+							 <label class="col-sm-1 control-label">审批标题:</label>
+							  <div class="col-sm-4 control-label tl dark">
+							 	 请假审批，字数限制30个字
+							 </div>
+							 <label class="col-sm-1 control-label ml10">审批编号:</label>
+								<div class="col-sm-4  control-label tl dark">
+									QJ-1234567890
+								</div>						 
+						</div>
+						<div class="form-group">							
+							<label class="col-sm-1 control-label">所属单位:</label>
+							<div class="col-sm-4 control-label tl dark">
+									${currentUnit.unitName}
+							</div>
+							<label class="col-sm-1 control-label">所属部门:</label>
+							<div class="col-sm-4 control-label tl dark">
+								 财务部
+							</div>	
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-1 control-label">申请人:</label>
+							 <div class="col-sm-4 control-label tl dark">
+							 	张三
+							 </div>
+							 <label class="col-sm-1 control-label">时间:</label>
+							 <div class="col-sm-4 control-label tl dark">
+							 	2018-6-24
+							 </div>
+						</div>
+						<div class="form-group">
+							 <label class="col-sm-1 control-label ml10">相关附件:</label>	
+							 <div class="col-sm-4 tl">
+							 	<a href="javascript:" class="fa fa-paperclip fjxg" id="_formAnnex" >上传附件</a>
+							 </div>	
+						</div>
+						<div class="form-group">
+							 <label class="col-sm-1 control-label ml10"></label>	
+							 <div class="col-sm-4 tl">
+							 	<div class="fjjs">
+								   <span>daiban.png</span>
+								   <em>18.0K</em>
+								   <em class="dwon blue">下载</em>
+								 </div>
+							 </div>	
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">申请内容:</label>				
+							<div class="col-sm-10"> 
+							   <div id='excel'  style='width:95%;min-height:500px;'>
+							   </div>
+							</div> 
+						</div>
+					   <div class="ibox-title">	
+							<div class="affair-tit">
+								审批记录
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="mibox">
+								  <table class="pro-table" width="100%">
+									<thead>
+										<tr>
+											<td width="10%">处理人</td>
+											<td width="20%">审批节点</td>
+											<td width="30%">处理时间</td>
+											<td width="50%">审批意见</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>张同学</td>
+											<td>发起人审核</td>
+											<td>2018-1-14 08：21</td>
+											<td>同意请做好相关的交接</td>
+										</tr>
+										<tr>
+											<td>张同学</td>
+											<td>发起人审核</td>
+											<td>2018-1-14 08：21</td>
+											<td>同意请做好相关的交接</td>
+										</tr>
+									</tbody>
+								  </table>
+								</div>
+							</div>							
+						</div>	
+						<div class="ibox-title">	
+							<div class="affair-tit">
+								审批意见
+							</div>
+						</div>
+						<div class="form-group">
+							 <label class="col-sm-1 control-label ml10">相关附件:</label>	
+							 <div class="col-sm-4 tl">
+							 	<textarea class="area" placeholder="请填写审批意见……"></textarea>
+							 </div>	
+						</div>
+						<div class="form-group">
+							 <label class="col-sm-1 control-label ml10">相关附件:</label>	
+							 <div class="col-sm-4 tl">
+							 	<a href="javascript:" class="fa fa-paperclip fjxg" id="_formAnnex" >上传附件</a>
+							 </div>	
+						</div>
+						<div class="form-group">
+							 <label class="col-sm-1 control-label ml10"></label>	
+							 <div class="col-sm-4 tl">
+							 	<div class="fjjs">
+								   <span>daiban.png</span>
+								   <em>18.0K</em>
+								   <i class="fa fa-close del"></i>
+								 </div>
+							 </div>	
+						</div>
+						<div class="mt10 mb10">
+							<div class="row">
+								<div class="col-sm-8 tr sumbit">
+								  <button class="btn btn-primary bohui rebut" type="submit">驳回</button>
+								  <button class="btn btn-danger subbut" onclick="javascript:history.back(-1);" type="button">同意并提交</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>	
+			  </div>
+		  </div>
+		</div>
+	 <!-- 全局js -->
+    <#include "/admin/common/common.ftl">
+    <!--exceljs-->
+    <#include "/admin/common/excel_common.ftl">
+    <script type="text/javascript">
+    		var excelJson = "${modul.address}";
+    		<#if formRights?exists >
+    			var formRights = ${formRights};
+    		</#if>
+			<#if currentPosts?exists >
+    			var currentPosts = ${currentPosts};
+    		</#if>
+	</script>
+	<script src="${ctx!}/oa/js/tran/new.js"></script>
+	</body>
+</html>

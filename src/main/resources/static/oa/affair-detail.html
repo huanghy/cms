@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>事务</title>
+	    <meta name="keywords" content="">
+	    <meta name="description" content="">
+	    <link rel="shortcut icon" href="favicon.ico">
+	    <link href="../hadmin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+	    <link href="../hadmin/css/bootstrap-treeview.css?v=3.3.6" rel="stylesheet">
+	    <link href="../hadmin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+	    <link href="../hadmin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	    <link href="../hadmin/css/animate.css" rel="stylesheet">
+	    <link href="../hadmin/css/style.css?v=4.1.0" rel="stylesheet">
+	    <link href="../hadmin/css/plugins/datapicker/datepicker3.css"> 
+	 </head>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content cf  animated fadeInRight">
+			 <div class="row">
+				<div class="col-sm-12">
+					<div class="ibox-title">当前位置：事务管理>事务列表>事务详情</div>	
+					<div class="affair-tit">事务详情</div>
+					<div class="btnbox cf">
+						<a href="javascript:" class="corbtn">导出excel</a> 
+						<a href="javascript:" class="corbtn">打印事务</a> 
+					</div>
+					<div class="tabbox">
+					 <table class="affair-tab">
+						<thead>
+							<tr>
+								<td width="25%" align="right"><div class="pr10">事务名称:</div></td>
+								<td width="50%"><div class="pr10">事务名称标题</div></td>
+								<td width="25%"></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td align="right"><div class="pr10">所属部门:</div></td>
+								<td align="left">部门一</td>
+								<td align="left"><span>所属单位：</span>单位一</td>
+							</tr>
+							<tr>
+								<td align="right"><div class="pr10">创建人:</div></td>
+								<td align="left">单位一</td>
+								<td align="left"><span>创建时间：</span>2017-09-12 12:50</td>
+							</tr>
+							<tr>
+								<td align="right" valign="top"><div class="pr10">申请内容:</div></td>
+								<td align="left" colspan="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</td>
+							</tr>
+							<tr>
+								<td align="right" valign="top"><div class="pr10">申请内容:</div></td>
+								<td align="left" colspan="2">
+									<table class="netab">
+										<thead>
+											<tr>
+												<td>附件名称</td>
+												<td>操作</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><a href="javascript:"  class="name">aaa.jpg</a></td>
+												<td><a href="javascript:" class="down">下载</a></td>
+											</tr>
+											<tr>
+												<td><a href="javascript:"  class="name">aaa.jpg</a></td>
+												<td><a href="javascript:" class="down">下载</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					 </table>					 
+					</div>
+					<div class="affair-tit">事务流程</div>
+					<table class="affbox">
+						<thead>
+							<tr>
+								<td>时间</td>
+								<td>流程</td>
+								<td>处理者</td>
+								<td>审批意见</td>
+								<td>备注</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2017.7.30     08:50:00</td>
+								<td>流程</td>
+								<td>处理者</td>
+								<td>审批意见</td>
+								<td>备注</td>
+							</tr>
+							<tr>
+								<td>2017.7.30     08:50:00</td>
+								<td>流程</td>
+								<td>处理者</td>
+								<td>审批意见</td>
+								<td>备注</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="affair-tit">待我审核</div>
+					<table class="dash">
+						<tr>
+							<td width="10%" align="right"><div class="pr5">审批人：</div></td>
+							<td width="90%" align="left">用户名（默认）</td>
+						</tr>
+						<tr>
+							<td align="right"> <div class="pr5">审批时间：</div></td>
+							<td align="left">2017/08/09 12:12:20（默认为现在）</td>
+						</tr>
+						<tr>
+							<td align="right"> <div class="pr5">审批时间：</div></td>
+							<td align="left">2017/08/09 12:12:20（默认为现在）</td>
+						</tr>
+						<tr>
+							<td align="right" valign="top"> <div class="pr5">审批意见：</div></td>
+							<td align="left"><select><option>同意</option><option>不同意</option></select></td>
+						</tr>
+						<tr>
+							<td align="right" valign="top"> <div class="pr5">备注：</div></td>
+							<td align="left"><textarea></textarea></td>
+						</tr>
+						<tr>
+							<td align="right" valign="top"> <div class="pr5">相关附件：</div></td>
+							<td align="left"><input type="file" class="file"><a class="filed" "javascript:">+相关附件</a></td>
+						</tr>
+					</table>
+					<div class="mt10">
+						 <a href="javascript:" class="btn btn-primary">确定</a>
+						 <a href="javascript:" class="btn btn-danger">取消</a>
+					</div>
+			  </div>
+		  </div>
+		</div>
+	<script src="../hadmin/js/jquery.min.js"></script>
+	<!--bootstrap-->
+	<script src="../hadmin/js/bootstrap.min.js"></script>
+	<!-- Bootstrap table -->
+	<script src="../hadmin/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="../hadmin/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="../hadmin/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../hadmin/js/bootstrap-treeview.js"></script>
+	<script src="../hadmin/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+	</body>
+</html>
