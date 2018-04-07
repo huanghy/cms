@@ -41,6 +41,8 @@ import com.cqunis.service.specification.SpecificationOperator.Operator;
 @Component("extJob")
 @Lazy(false)
 public class ExtJob {
+	
+	java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	/***企业号
 	 */
@@ -49,6 +51,7 @@ public class ExtJob {
 	IExtensionService extensionService;
 	@Resource(name="exRecordServiceImpl")
 	IExRecordService exRecordService; 
+	Timer timer = new Timer();
 	
 	
 	
@@ -80,11 +83,9 @@ public class ExtJob {
 					String id = extension.getId();
 					int period = extension.getPeriod();
 					Random random = new Random();
-					int tperiod = random.nextInt(period);
 					/***可用金额**/
 					String invAmount = extension.getInvAmount();
 					BigDecimal bigInvAmount = new BigDecimal(invAmount);
-					Timer timer = new Timer();
 			        timer.schedule(new TimerTask() {
 			            @Override
 			            public void run() {
@@ -110,14 +111,14 @@ public class ExtJob {
 								exRecordService.save(exRecord);
 								extension.setExeState(-1);
 								extensionService.update(extension);
-								timer.cancel();
+								this.cancel();
 								timer.purge();
 							} else {
-								timer.cancel();
+								this.cancel();
 								timer.purge();
 							}
 			            }
-			        },1000,tperiod*1000);
+			        },1000,period*1000);
 				}
 			}
 		}catch(Exception e){
