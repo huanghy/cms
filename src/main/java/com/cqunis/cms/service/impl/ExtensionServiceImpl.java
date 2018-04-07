@@ -19,4 +19,12 @@ public class ExtensionServiceImpl extends BaseServiceImpl<Extension,String> impl
 	   {
 	      return this.extensionDao;
 	   }
+	 
+	 
+	 /***
+	  * 查询可用余额
+	  */
+	 public String welcomeBalance(String humanId,String entCode){
+		 return extensionDao.welcomeBalance(humanId, entCode);
+	 }
 }

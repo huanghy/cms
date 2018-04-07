@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.cqunis.entity.support.BaseEntity;
 
 
@@ -28,6 +29,7 @@ public class Extension extends BaseEntity {
 	@Column(name="alr_ad")
 	private int alrAd;
 
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="end_time")
 	private Date endTime;
@@ -59,6 +61,11 @@ public class Extension extends BaseEntity {
 
 	@Column(name="unit_price")
 	private String unitPrice;
+	
+	/***备注
+	 */
+	@Column(name="des")
+	private String des;
 
 
 	public Extension() {
@@ -168,5 +175,23 @@ public class Extension extends BaseEntity {
 
 	public void setUnitPrice(String unitPrice) {
 		this.unitPrice = unitPrice;
+	}
+
+
+
+	/**
+	 * @return the des
+	 */
+	public String getDes() {
+		return des;
+	}
+
+
+
+	/**
+	 * @param des the des to set
+	 */
+	public void setDes(String des) {
+		this.des = des;
 	}
 }

@@ -93,7 +93,23 @@
 	                         </@shiro.hasPermission>
 	                        </ul>
 	                    </li>
-                     </@shiro.hasPermission>
+                    </@shiro.hasPermission>
+					<@shiro.hasPermission name="oa:exte:index">
+						<li>
+	                        <a href="#">
+	                            <i class="fa fa-file-text"></i>
+	                            <span class="nav-label">推广管理</span>
+	                            <span class="fa arrow"></span>
+	                        </a>
+	                        <ul class="nav nav-second-level">
+	                         <@shiro.hasPermission name="oa:exte:index">
+	                            <li>
+	                               <a class="J_menuItem" href="${ctx!}/oa/exte/index">推广任务</a>
+	                            </li>
+	                         </@shiro.hasPermission>
+	                        </ul>
+	                    </li>
+                    </@shiro.hasPermission>
                     <@shiro.hasPermission name="system:index">
 	                    <li>
 	                        <a href="javascript:void(0)">
