@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="${ctx!}/hadmin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="${ctx!}/hadmin/css/bootstrap.min.css?v=3.3.4" rel="stylesheet">
     <link href="${ctx!}/hadmin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
     <link href="${ctx!}/hadmin/css/animate.css" rel="stylesheet">
     <link href="${ctx!}/hadmin/css/style.css?v=4.1.0" rel="stylesheet">
@@ -22,104 +22,107 @@
 		   .fa-plus-square:before{position:absolute;top:0px;left:-17px;}
 		   .fa-minus-square:before{position:absolute;top:0px;left:-17px;}
 		   .folder.curr,.flied.curr{background:#F8F8F8;}
-		   .patree{padding:5px 0px 0px 10px}		    
+		   .patree{padding:5px 0px 0px 10px}	
+		   .form-group .col-sm-2{width:20%;line-height: 2rem;}	
+		   .form-group .col-sm-10{width:80%}	   	    
 	</style>
 </head>
 <body class="gray-bg">
     <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
+         <div class="row">
             <div class="col-sm-12">
-                 	<div class="row">
-                		<div class="col-sm-12">
-		                        <form class="form-horizontal m-t ui-box" id="frm" method="post">
-		                        	<input type="hidden" id="id" name="id" value="${extension.id}">
-		                        	<input type="hidden" id="taskState" name="taskState" value="<#if extension?exists>${extension.taskState}<#else>-1</#if>">
-		                       		<input type="hidden" id="alrAd" name="alrAd" value="<#if extension?exists>${extension.alrAd}<#else>0</#if>">
-		                       		<input type="hidden" id="actualAmount" name="actualAmount" value="<#if extension?exists>${extension.actualAmount}<#else>0.00</#if>">
-		                            <div class="form-group">
-		                                <label class="col-sm-3 control-label">推广名称：</label>
-		                                <div class="col-sm-8">
-		                                    <input id="exName" name="exName" class="form-control" type="text" value="${extension.exName}">
-		                                </div>
-		                            </div>
-		                            <div class="form-group">
-		                                <label class="col-sm-3 control-label">广告类型：</label>
-		                                <div class="col-sm-8">
-		                                	<input type="hidden" id="exTypeName" name="exTypeName" value="${extension.exTypeName}">
-		                                    <select  id="exTypeId" name="exTypeId" class="form-control">
-											<option  value="0" <#if extension.exTypeId=="0" >selected="selected"</#if> >微信朋友圈</option>
-											<option  value="1" <#if extension.exTypeId=="1" >selected="selected"</#if> >微信群</option>
-											<option  value="2" <#if extension.exTypeId=="2" >selected="selected"</#if> >QQ群</option>
-											<option  value="3" <#if extension.exTypeId=="3" >selected="selected"</#if> >微信公众号</option>
-											<option  value="4" <#if extension.exTypeId=="4" >selected="selected"</#if> >综合推广</option>
-										</select> 
-		                                </div>
-		                            </div>
-		                            <div class="form-group">
-		                                <label class="col-sm-3 control-label">投放金额：</label>
-		                                <div class="col-sm-8">
-		                                    <input id="invAmount" name="invAmount" class="form-control" type="text" value="<#if extension?exists>${extension.invAmount}<#else>5000</#if>">
-		                                </div>
-		                            </div>
-		                            <div class="form-group">
-		                                <label class="col-sm-3 control-label">推广单价：</label>
-		                                <div class="col-sm-8">
-		                                    <input id="unitPrice" name="unitPrice" class="form-control" type="text" value="<#if extension?exists>${extension.unitPrice}<#else>0.95</#if>">
-		                                </div>
-		                            </div>
-		                             <div class="form-group">
-		                                <label class="col-sm-3 control-label">时间间隔：</label>
-		                                <div class="col-sm-8">
-		                                    <input id="period" name="period" class="form-control" type="text" value="<#if extension?exists>${extension.period}</#if>">
-		                                </div>
-		                            </div>
-		                             <div class="form-group">
-		                                <label class="col-sm-3 control-label">推广数量：</label>
-		                                <div class="col-sm-8">
-		                                    <input id="randomNum" name="randomNum" class="form-control" type="text" value="<#if extension?exists>${extension.randomNum}</#if>">
-		                                </div>
-		                            </div>
-		                             <div class="form-group">
-		                                <label class="col-sm-3 control-label">地域：</label>
-		                                <div class="col-sm-8">
-		                                    <input id="region" name="region" class="form-control" type="text" value="中国" readonly="readonly" >
-		                                </div>
-		                            </div>
-		                             <div class="form-group">
-		                                <label class="col-sm-3 control-label">结束时间：</label>
-		                                <div class="col-sm-8">
-		                                    <input id="endTime" name="endTime" class="laydate-icon form-control layer-date" type="text" value="${extension.endTime}" >
-		                                </div>
-		                            </div>
-		                            <div class="form-group">
-		                                <label class="col-sm-3 control-label">任务用户：</label>
-		                                <div class="col-sm-8">
-		                                	<input type="hidden" id="humanName" name="humanName" value="${extension.humanName}">
-		                                    <select  id="humanId" name="humanId" class="form-control">
-											<#if users?exists>
-												<#list users as user>
-													<option  value="${user.id}" <#if extension?exists&&user.id==extension.humanId >selected="selected"</#if> >${user.humanName}</option>
-												</#list>
-											</#if>
-										</select> 
-		                                </div>
-		                            </div>
-		                            <div class="form-group">
-		                                <label class="col-sm-3 control-label">排序：</label>
-		                                <div class="col-sm-8">
-		                                    <input id="sort" name="sort" class="form-control" value="${extension.sort}" readonly="readonly">
-		                                </div>
-		                            </div>
-		                            <div class="form-group">
-		                                <div class="col-sm-12 text-center">
-		                                    <button class="btn btn-primary subbut" type="submit">保存</button>
-		                                </div>
-		                            </div>
-		                        </form>
-                		  </div>
-	                  </div>	                 
-                </div>
-            </div>
+                <form class="form-horizontal m-t ui-box" id="frm" method="post">
+                	<input type="hidden" id="id" name="id" value="${extension.id}">
+                	<input type="hidden" id="taskState" name="taskState" value="<#if extension?exists>${extension.taskState}<#else>-1</#if>">
+               		<input type="hidden" id="alrAd" name="alrAd" value="<#if extension?exists>${extension.alrAd}<#else>0</#if>">
+               		<input type="hidden" id="actualAmount" name="actualAmount" value="<#if extension?exists>${extension.actualAmount}<#else>0.00</#if>">
+                    <div class="form-group" style="display: flex;">
+                    	<label class="col-sm-2 control-label">推广名称：</label>
+	                    <div class="col-sm-10">
+	                        <input id="exName" name="exName" class="form-control"  type="text" value="${extension.exName}">
+	                    </div>
+					</div>
+                    <div class="form-group" style="display: flex;">
+                        <label class="col-sm-2 control-label">广告类型：</label>
+                        <div class="col-sm-10">
+                        	<input type="hidden" id="exTypeName"  name="exTypeName" value="${extension.exTypeName}">
+	                            <select  id="exTypeId" name="exTypeId" class="form-control" >
+								<#if exTypes?exists>
+									<#list exTypes as exType>
+										<option  value="${exType.id}" <#if extension?exists&&exType.id==extension.exTypeId >selected="selected"</#if> >${exType.typeName}</option>
+									</#list>
+								</#if>
+							</select> 
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">投放金额：</label>
+                        <div class="col-sm-10">
+                            <input id="invAmount" name="invAmount" class="form-control"  type="text" value="<#if extension?exists>${extension.invAmount}<#else>3000</#if>">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">推广单价：</label>
+                        <div class="col-sm-10">
+                            <input id="unitPrice" name="unitPrice" class="form-control" type="text" value="<#if extension?exists>${extension.unitPrice}<#else>0.95</#if>">
+                        </div>
+                    </div>
+                     <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">时间间隔(分)：</label>
+                        <div class="col-sm-10">
+                            <input id="period" name="period" class="form-control" type="text" value="<#if extension?exists>${extension.period}</#if>">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">延迟时间(分)：</label>
+                        <div class="col-sm-10">
+                            <input id="delay" name="delay" class="form-control" type="text" value="<#if extension?exists>${extension.delay}</#if>">
+                        </div>
+                    </div>
+                     <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">推广数量：</label>
+                        <div class="col-sm-10">
+                            <input id="randomNum" name="randomNum" class="form-control" type="text" value="<#if extension?exists>${extension.randomNum}</#if>">
+                        </div>
+                    </div>
+                     <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">地域：</label>
+                        <div class="col-sm-10">
+                            <input id="region" name="region" class="form-control" type="text" value="中国" readonly="readonly" >
+                        </div>
+                    </div>
+                     <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">结束时间：</label>
+                        <div class="col-sm-10">
+                            <input id="endTime" name="endTime" class="laydate-icon form-control layer-date"  type="text" value="${extension.endTime}" >
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">任务用户：</label>
+                        <div class="col-sm-10">
+                        	<input type="hidden" id="humanName" name="humanName" value="${extension.humanName}">
+                            <select  id="humanId" name="humanId" class="form-control">
+							<#if users?exists>
+								<#list users as user>
+									<option  value="${user.id}" <#if extension?exists&&user.id==extension.humanId >selected="selected"</#if> >${user.humanName}</option>
+								</#list>
+							</#if>
+						</select> 
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex;" >
+                        <label class="col-sm-2 control-label">排序：</label>
+                        <div class="col-sm-10">
+                            <input id="sort" name="sort" class="form-control" value="<#if extension?exists>${extension.sort}<#else>${sort}</#if>" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            <button class="btn btn-primary subbut" type="submit">保存</button>
+                        </div>
+                    </div>
+                </form>
+		  </div>
         </div>
     </div>
     <!-- 全局js -->
@@ -140,7 +143,6 @@
 		        format:'YYYY-MM-DD hh:mm:ss'
 		    });
     $(document).ready(function () {
-    	$("#sort").val(${sort});
 	    $("#frm").validate({
     	    rules: {
     	    	exName: {
@@ -148,7 +150,7 @@
     	      },
     	      	invAmount: {
     	      	number:true,
-    	      	min:5000,
+    	      	min:3000,
     	      	max:100000,
     	        required: true,
     	      },
@@ -163,6 +165,10 @@
     	        required: true
     	      },
     	      period: {
+    	      	number:true,
+    	        required: true
+    	      },
+    	       delay: {
     	      	number:true,
     	        required: true
     	      },

@@ -64,6 +64,12 @@ public class Extension extends BaseEntity {
 	@Column(name="period")
 	private int period;
 	
+	/***延迟时间
+	 */
+	@Column(name="delay")
+	private int delay;
+	
+	
 	/**随机数量**/
 	@Column(name="random_num")
 	private int randomNum;
@@ -261,5 +267,25 @@ public class Extension extends BaseEntity {
 	public void setExeState(int exeState) {
 		this.exeState = exeState;
 	}
+
+
+
+	/**
+	 * @return the delay
+	 */
+	public int getDelay() {
+		return delay;
+	}
+
+
+
+	/**
+	 * @param delay the delay to set
+	 */
+	public void setDelay(int delay) {
+		this.delay = delay;
+	}
+	
+	
 	
 }

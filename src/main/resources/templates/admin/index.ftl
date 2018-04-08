@@ -56,7 +56,7 @@
                     	 </a>
                     </div>
                </nav>        
-        <nav class="navbar-default navbar-static-side" role="navigation">
+        	<nav class="navbar-default navbar-static-side" role="navigation">
             <div class="nav-close"><i class="fa fa-times-circle"></i>
             </div>
             <div class="sidebar-collapse">
@@ -104,6 +104,11 @@
 	                         <@shiro.hasPermission name="oa:exte:index">
 	                            <li>
 	                               <a class="J_menuItem" href="${ctx!}/oa/exte/index">推广任务</a>
+	                            </li>
+	                         </@shiro.hasPermission>
+							<@shiro.hasPermission name="oa:exty:index">
+	                            <li>
+	                               <a class="J_menuItem" href="${ctx!}/oa/exty/index">广告类型</a>
 	                            </li>
 	                         </@shiro.hasPermission>
 	                        </ul>

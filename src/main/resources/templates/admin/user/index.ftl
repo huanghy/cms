@@ -155,9 +155,9 @@
 		                                   operateHtml="<@shiro.hasPermission name="system:user:edit"><i class='fa fa-edit warter' title='修改' onclick=editUser('"+row.id+"')></i></@shiro.hasPermission>"+
 		                        			"<@shiro.hasPermission name="system:user:deleteBatch"><i class='fa fa-trash-o warter' title='删除' onclick=delUser('"+row.id+"')></i></@shiro.hasPermission>"+
 		                        			"<@shiro.hasPermission name="system:user:grant"><i class='fa fa-chain warter' title='关联角色' onclick=grant('"+row.id+"') ></i></@shiro.hasPermission>"+
-		                        			"<i class='fa fa-unlock warter' onclick=reset('"+row.id+"') title='重置密码'  ></i>"+
-		                        			"<i class='fa fa-sitemap warter' title='设置岗位' onclick=grantpower('"+row.id+"') ></i>"+
-		                        			"<i class='fa fa-group warter' title='设置部门负责人' onclick=dephuman('"+row.id+"') ></i>";
+		                        			"<i class='fa fa-unlock warter' onclick=reset('"+row.id+"') title='重置密码'  ></i>";
+		                        			//"<i class='fa fa-sitemap warter' title='设置岗位' onclick=grantpower('"+row.id+"') ></i>"
+		                        			//"<i class='fa fa-group warter' title='设置部门负责人' onclick=dephuman('"+row.id+"') ></i>"
 		                        return operateHtml;
 		                    }
 					    }]

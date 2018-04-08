@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">姓名：</label>
+                        <label class="col-sm-4 control-label">昵称：</label>
                         <div class="col-sm-8">
                             <input id="humanName" name="humanName" class="form-control" type="text" value="${user.humanName}" >
                         </div>
@@ -37,7 +37,7 @@
                             <input id="age" name="age" class="form-control" type="text" value="${user.age}" >
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label class="col-sm-4 control-label">性别：</label>
                         <div class="col-sm-8">
                         	<select name="sex" class="form-control">
@@ -45,25 +45,25 @@
                         		<option value="1" <#if user.sex == 1>selected="selected"</#if> >男</option>
                         	</select>
                         </div>
-                    </div>
-                    <div class="form-group">
+                    </div>-->
+                    <!--<div class="form-group">
                         <label class="col-sm-4 control-label">出生日期：</label>
                         <div class="col-sm-8">
                             <input id="birthday" name="birthday" readonly="readonly" class="laydate-icon form-control layer-date" value="${user.birthday}">
                         </div>
-                    </div>
-                    <div class="form-group">
+                    </div>-->
+                    <!--<div class="form-group">
                         <label class="col-sm-4 control-label">电话：</label>
                         <div class="col-sm-8">
                             <input id="phone" name="phone" class="form-control" value="${user.phone}">
                         </div>
-                    </div>
-                    <div class="form-group">
+                    </div>-->
+                    <!--<div class="form-group">
                         <label class="col-sm-4 control-label">办公电话：</label>
                         <div class="col-sm-8">
                             <input id="officePhone" name="officePhone" class="form-control" value="${user.officePhone}">
                         </div>
-                    </div>
+                    </div>-->
                     
                     <div class="form-group">
                         <label class="col-sm-4 control-label">E-mail：</label>
@@ -134,10 +134,10 @@
 		}, "请正确填写您的电话号码");
     	$(document).ready(function () {
 			  	//外部js调用
-			    laydate({
-			    elem: '#birthday',
-			        event: 'focus'
-			    });
+			    //laydate({
+			    //elem: '#birthday',
+			        //event: 'focus'
+			    //});
 			    $("#frm").validate({
 		    	    rules: {
 			    	    	userName: {
@@ -162,7 +162,7 @@
 			    	        minlength: 2,
 			    	    	maxlength: 10
 			    	      },
-			    	      sex: {
+			    	      /****sex: {
 			    	        required: true
 			    	      },
 			    	      birthday: {
@@ -176,7 +176,7 @@
 			    	      phone: {
 			    	      	required: true,
 			    	        isMobile:true
-			    	      },
+			    	      },****/
 			    	      email: {
 			    	      	required: true
 			    	      },

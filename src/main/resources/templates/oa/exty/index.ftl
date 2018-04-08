@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>推广管理</title>
+    <title>推广类型管理</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico">
@@ -29,23 +29,21 @@
     <div class="wrapper  cf animated fadeInRight">
         <div class="row">
         	<div class="col-sm-12 fttit">			 		
-			 		推广管理
+			 		推广类型管理
 			 </div>
             <div class="col-sm-12">
                 <div class="ibox ">
                     <div class="ibox-title">
                         <div class="affair-tit">                        	
-                        	推广管理
+                        	推广类型管理
                         </div>
                     </div>
                     <div class="ibox-content">
                         <p class="pr">
-                        	<#if currentUser.userName=='admin' >
-	                        	<button class="btn btn-success btnnews" type="button" onclick="add();">
-						   					<i class="fa fa-plus"></i>
-						   					 添加
-						   			</button>
-                        	</#if>
+                    		<button class="btn btn-success btnnews" type="button" onclick="add();">
+				   					<i class="fa fa-plus"></i>
+				   					 添加
+				   			</button>
                         </p>
                           <div class="row row-lg">
 		                    <div class="col-sm-12">
@@ -72,7 +70,7 @@
 			    //必须设置，不然request.getParameter获取不到请求参数
 			    contentType: "application/x-www-form-urlencoded",
 			    //获取数据的Servlet地址
-			    url:"${ctx!}/oa/exte/list",
+			    url:"${ctx!}/oa/exty/list",
 			    classes:"table table-hover filelist",
 			    //表格显示条纹
 			    striped: true,
@@ -114,55 +112,15 @@
 			        field: "sort"
 			    },
 			    {
-			        title:"推广名称",
-			        field: "exName"
-			    },{
-			        title: "广告类型",
-			        field: "exTypeName"
-			    },{
-			        title: "任务状态",
-			        field: "taskState",
-			        formatter: function(value, row, index){
-			        	if(value=='-1'){
-			        		return '未启动';
-			        	}else if(value=='0'){
-			        		return '启动';
-			        	} else {
-			        		return '停止';
-			        	}
-			        }
-			    },{
-			        title: "投放金额",
-			        field: "invAmount"
-			    },{
-			        title: "推广单价",
-			        field: "unitPrice"
-			    },{
-			        title: "结束时间",
-			        field: "endTime"
-			    },{
-			        title: "已发广告数",
-			        field: "alrAd"
-			    },{
-			        title: "实际消费",
-			        field: "actualAmount"
-			    },{
-			        title: "推广地域",
-			        field: "region"
+			        title:"推广类型",
+			        field: "typeName"
 			    },{
 			        title: "操作",
 			        field: "empty",
                     formatter: function (value, row, index) {
                      		var operateHtml = "";
-                    		<#if currentUser.userName=='admin' >
-	                        	operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
-	                        	operateHtml += '<button class="btn btn-primary btn-xs" type="button" onclick="del(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;删除</button> &nbsp;';
-                        		if(row.taskState==0){
-                        			operateHtml += '<button class="btn btn-primary btn-xs" type="button" onclick="operatio(\''+row.id+'\',1)"><i class="fa fa-edit"></i>&nbsp;停止</button> &nbsp;';
-                        		} else {
-                        			operateHtml += '<button class="btn btn-primary btn-xs" type="button" onclick="operatio(\''+row.id+'\',0)"><i class="fa fa-edit"></i>&nbsp;启动</button> &nbsp;';
-                        		}
-							</#if>
+	                        operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
+	                        operateHtml += '<button class="btn btn-primary btn-xs" type="button" onclick="del(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;删除</button> &nbsp;';
 						return operateHtml;                      
                     }
 			    }]
@@ -170,52 +128,34 @@
         });
 
 
-		<!--推广修改-->
+		<!--推广类型修改-->
         function edit(id){
         	layer.open({
         	      type: 2,
-        	      title: '推广修改',
+        	      title: '推广类型修改',
         	      shadeClose: true,
 				  shade: [0.8,'#393D49'],
-        	      area: ['650px', '550px'],
-        	      content: '${ctx!}/oa/exte/edit/' + id,
+        	      area: ['800px', '300px'],
+        	      content: '${ctx!}/oa/exty/edit/' + id,
         	      end: function(index){
         	      	 $('#table_list').bootstrapTable("refresh");
         	      }
         	    });
         }
         
-       <!--推广添加-->
+       <!--推广类型添加-->
         function add(){
         	layer.open({
         	      type: 2,
-        	      title: '推广添加',
+        	      title: '推广类型添加',
         	      shadeClose: true,
 				  shade:[0.8,'#393D49'],
-        	      area: ['650px', '550px'],
-        	      content: '${ctx!}/oa/exte/add',
+        	      area: ['550px', '300px'],
+        	      content: '${ctx!}/oa/exty/add',
         	      end: function(index){
         	      	$('#table_list').bootstrapTable("refresh");
         	      }
         	    });
-        }
-        
-        
-        <!--操作-->
-        function operatio(id,state){
-        	layer.confirm('确定这样操作吗?', {icon: 3, title:'提示'}, function(index){
-        		$.ajax({
-    	    		   type: "POST",
-    	    		   dataType: "json",
-    	    		   url: "${ctx!}/oa/exte/opr/"+ id+"/"+state,
-    	    		   success: function(msg){
-	 	   	    			layer.msg(msg.message, {time: 2000},function(){
-	 	   	    				 $('#table_list').bootstrapTable("refresh");
-	 	   	    				layer.close(index);
-	 	   					});
-    	    		   }
-    	    	});
-       		});
         }
         
         
@@ -225,7 +165,7 @@
         		$.ajax({
     	    		   type: "POST",
     	    		   dataType: "json",
-    	    		   url: "${ctx!}/oa/exte/delete/" + id,
+    	    		   url: "${ctx!}/oa/exty/delete/" + id,
     	    		   success: function(msg){
 	 	   	    			layer.msg(msg.message, {time: 2000},function(){
 	 	   	    				 $('#table_list').bootstrapTable("refresh");

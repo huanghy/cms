@@ -74,7 +74,8 @@ public class ExtJob {
 			if(null != extensions 
 					&& extensions.size()>0){
 				for(Extension extension:extensions){
-					if(extension.getPeriod()==0){
+					if(extension.getPeriod()==0
+							||extension.getDelay()==0){
 						continue;
 					}
 					/***先跟新状态**/
@@ -82,6 +83,7 @@ public class ExtJob {
 					extensionService.update(extension);
 					String id = extension.getId();
 					int period = extension.getPeriod();
+					int delay = extension.getDelay();
 					Random random = new Random();
 					/***可用金额**/
 					String invAmount = extension.getInvAmount();
@@ -118,7 +120,7 @@ public class ExtJob {
 								timer.purge();
 							}
 			            }
-			        },1000,period*1000);
+			        },delay*60*1000,period*60*1000);
 				}
 			}
 		}catch(Exception e){

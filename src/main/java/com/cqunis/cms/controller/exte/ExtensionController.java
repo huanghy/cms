@@ -1,7 +1,5 @@
 package com.cqunis.cms.controller.exte;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cqunis.cms.entity.ExRecord;
+import com.cqunis.cms.entity.ExType;
 import com.cqunis.cms.entity.Extension;
 import com.cqunis.cms.service.IExRecordService;
+import com.cqunis.cms.service.IExTypeService;
 import com.cqunis.cms.service.IExtensionService;
 import com.cqunis.common.JsonResult;
 import com.cqunis.controller.BaseController;
@@ -41,6 +41,8 @@ public class ExtensionController extends BaseController {
 	IUserService userService;
 	@Resource(name="exRecordServiceImpl")
 	IExRecordService exRecordService; 
+	@Resource(name="exTypeServiceImpl")
+	IExTypeService exTypeService;
 	
 	
 	/***推广管理
@@ -105,6 +107,12 @@ public class ExtensionController extends BaseController {
 				map.put("users",users);
 			}
 			map.put("sort",sort);
+			/****推广分类***/
+			List<ExType> exTypes = exTypeService.findAll();
+			if(null != exTypes 
+					&& exTypes.size()>0){
+				map.put("exTypes",exTypes);
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -130,6 +138,12 @@ public class ExtensionController extends BaseController {
 				map.put("users",users);
 			}
 			map.put("extension",extension);
+			/****推广分类***/
+			List<ExType> exTypes = exTypeService.findAll();
+			if(null != exTypes 
+					&& exTypes.size()>0){
+				map.put("exTypes",exTypes);
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}

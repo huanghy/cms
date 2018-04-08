@@ -19,6 +19,8 @@ public class ExType extends BaseEntity {
 
 	@Column(name="type_name")
 	private String typeName;
+	
+	private int sort;
 
 	public ExType() {
 	}
@@ -29,5 +31,19 @@ public class ExType extends BaseEntity {
 
 	public void setTypeName(String typeName) {
 		this.typeName = typeName;
+	}
+
+	/**
+	 * @return the sort
+	 */
+	public int getSort() {
+		return sort;
+	}
+
+	/**
+	 * @param sort the sort to set
+	 */
+	public void setSort(int sort) {
+		this.sort = sort;
 	}
 }
