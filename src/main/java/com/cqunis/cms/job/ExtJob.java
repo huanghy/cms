@@ -17,7 +17,11 @@ package com.cqunis.cms.job;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -52,8 +56,29 @@ public class ExtJob {
 	@Resource(name="exRecordServiceImpl")
 	IExRecordService exRecordService; 
 	Timer timer = new Timer();
+	Map<String,TimerTask> timerTaskMap = new HashMap<String,TimerTask>();
 	
 	
+	
+	/***释放锁
+	 */
+	@Scheduled(cron = "${job.ext.cron}")
+	public  synchronized void releaseTask() {
+		if(!timerTaskMap.isEmpty()
+				&&timerTaskMap.size()>0){
+			Iterator<Entry<String,TimerTask>> timerTaskIte = timerTaskMap.entrySet().iterator();
+			while(timerTaskIte.hasNext()){
+				Entry<String,TimerTask> timerTaskEntry = timerTaskIte.next();
+				String id = timerTaskEntry.getKey();
+				TimerTask timerTask = timerTaskEntry.getValue();
+				Extension extensiont=extensionService.find(id);
+				if(extensiont.getTaskState()==1){
+					timerTask.cancel();
+					timer.purge();
+            	}
+			}
+		}
+	}
 	
 	/****
 	 * translateVoice方法慨述:定时扫描处理
@@ -91,6 +116,13 @@ public class ExtJob {
 			        timer.schedule(new TimerTask() {
 			            @Override
 			            public void run() {
+			            	timerTaskMap.put(id,this);
+			            	Extension extensiont=extensionService.find(id);
+			            	/***停止关闭**/
+			            	if(extensiont.getTaskState()==1){
+			            		this.cancel();
+								timer.purge();
+			            	}
 			            	/***数量**/
 							int alrAd = extension.getAlrAd();
 							int randomNum = extension.getRandomNum();
@@ -104,6 +136,7 @@ public class ExtJob {
 								BigDecimal scale = bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP);
 								extension.setActualAmount(scale.toString());
 								extension.setAlrAd(alrAd+randomNumt);
+								extensionService.update(extension);
 								/***启动记录***/
 								ExRecord exRecord = new ExRecord();
 								exRecord.setExtId(id);
@@ -111,10 +144,6 @@ public class ExtJob {
 								exRecord.setHumanId(extension.getHumanId());
 								exRecord.setUnitPrice(extension.getUnitPrice());
 								exRecordService.save(exRecord);
-								extension.setExeState(-1);
-								extensionService.update(extension);
-								this.cancel();
-								timer.purge();
 							} else {
 								this.cancel();
 								timer.purge();

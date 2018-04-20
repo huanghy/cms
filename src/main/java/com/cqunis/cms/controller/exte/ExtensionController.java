@@ -188,7 +188,7 @@ public class ExtensionController extends BaseController {
 			}
 			/***删除记录**/
 			String spec = " extId='"+id+"'";
-			exRecordService.del(ExRecord.class.getName(), spec, id);
+			exRecordService.del(ExRecord.class.getName(),spec,entCode);
 			extensionService.delete(extension);
 		} catch (Exception e) {
 			e.printStackTrace();
